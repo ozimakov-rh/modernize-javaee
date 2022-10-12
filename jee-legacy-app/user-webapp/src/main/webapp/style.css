@@ -1,0 +1,73 @@
+@import "https://fonts.googleapis.com/css2family=Red+Hat+Display";
+
+body {
+    margin: 0px;
+    font-family: 'Red Hat Display', serif;
+}
+
+.header {
+    background-color: black;
+    color: white;
+    font-size: 48px;
+    width: 100%;
+    padding: 5px;
+}
+
+.workarea {
+    padding: 5px;
+    background-color: white;
+}
+
+.data {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.idcol {
+    color: gray;
+    font-style: italic;
+}
+
+.widecol {
+    width: 100%;
+}
+
+.data th {
+    border: 1px solid gray;
+    background-color: lightgray;
+    padding: 5px;
+}
+
+.data td {
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+.button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.r-button {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    white-space: nowrap;
+    cursor: pointer;
+}
