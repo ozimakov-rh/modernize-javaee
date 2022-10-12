@@ -1,6 +1,6 @@
 package com.redhat.demo.admin;
 
-import com.redhat.demo.common.service.GreetingService;
+import com.redhat.demo.common.service.KudoService;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -14,12 +14,12 @@ import java.io.IOException;
 public class AdminServlet extends HttpServlet {
 
     @EJB
-    private GreetingService greetingService;
+    private KudoService kudoService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long greetingId = Long.parseLong(req.getParameter("id"));
-        greetingService.deleteGreeting(greetingId);
+        kudoService.deleteKudo(greetingId);
         resp.sendRedirect("./");
     }
 

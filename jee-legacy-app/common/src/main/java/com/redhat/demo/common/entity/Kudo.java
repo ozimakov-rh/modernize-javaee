@@ -8,7 +8,7 @@ import java.util.Date;
 @NoArgsConstructor @AllArgsConstructor @Builder
 @Getter @Setter
 @ToString
-public class Greeting implements Serializable {
+public class Kudo implements Serializable {
 
     Long id;
     String userFrom;

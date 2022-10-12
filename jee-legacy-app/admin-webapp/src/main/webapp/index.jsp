@@ -1,7 +1,8 @@
-<%@ page import="com.redhat.demo.common.service.GreetingService" %>
+<%@ page import="com.redhat.demo.common.service.KudoService" %>
 <%@ page import="javax.naming.InitialContext" %>
-<%@ page import="com.redhat.demo.common.entity.Greeting" %>
+<%@ page import="com.redhat.demo.common.entity.Kudo" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.redhat.demo.common.entity.Kudo" %>
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
@@ -11,7 +12,7 @@
 <div class="header">
     <table>
         <tr>
-            <td class="widecol"><span class="header">Admin users' greetings</span></td>
+            <td class="widecol"><span class="header">Admin users' kudos</span></td>
             <td><a href="/user-webapp" class="r-button">User app</a></td>
         </tr>
     </table>
@@ -19,21 +20,20 @@
 
 <div class="workarea">
     <%
-        GreetingService greetingService = (GreetingService) new InitialContext().lookup("java:app/core-ejb-1.0-SNAPSHOT/greetingService");
+        KudoService kudoService = (KudoService) new InitialContext().lookup("java:app/core-ejb-1.0-SNAPSHOT/kudoService");
     %>
     <table class="data">
         <tr>
             <th class="idcol">ID</th>
             <th>From</th>
             <th>To</th>
-            <th class="widecol">Greeting</th>
+            <th class="widecol">Kudo</th>
             <th>Created</th>
             <th>Delete</th>
         </tr>
         <%
-            List<Greeting> greetings = greetingService.listAllGreetings();
-
-            if (greetings == null || greetings.size() == 0) {
+            List<Kudo> kudos = kudoService.listAllKudos();
+            if (kudos == null || kudos.size() == 0) {
         %>
         <tr>
             <td colspan="6">No data here yet</td>
@@ -42,20 +42,20 @@
                 return;
             }
 
-            for (Greeting g : greetings) {
+            for (Kudo kudo : kudos) {
         %>
         <tr>
-            <td class="idcol"><%=g.getId()%>
+            <td class="idcol"><%=kudo.getId()%>
             </td>
-            <td><%=g.getUserFrom()%>
+            <td><%=kudo.getUserFrom()%>
             </td>
-            <td><%=g.getUserTo()%>
+            <td><%=kudo.getUserTo()%>
             </td>
-            <td class="widecol"><%=g.getDescription()%>
+            <td class="widecol"><%=kudo.getDescription()%>
             </td>
-            <td style="white-space: nowrap;"><%=g.getCreationDate()%>
+            <td style="white-space: nowrap;"><%=kudo.getCreationDate()%>
             </td>
-            <td><a href="./admin?id=<%=g.getId()%>" class="button">Delete</a>
+            <td><a href="./admin?id=<%=kudo.getId()%>" class="button">Delete</a>
             </td>
         </tr>
         <%

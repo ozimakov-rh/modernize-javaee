@@ -7,10 +7,10 @@
 </head>
 <body>
 
-<div class="header">Create a greeting</div>
+<div class="header">Send a Kudo</div>
 
 <div class="workarea">
-    <form action="./greetings" method="post">
+    <form action="./kudos" method="post">
         <table>
             <tr>
                 <td><label for="from">From:</label></td>
@@ -20,7 +20,7 @@
                 <td><input type="text" id="to" name="to"></td>
             </tr>
             <tr>
-                <td><label for="descr">Greeting text:</label></td>
+                <td><label for="descr">Kudo text:</label></td>
                 <td colspan="4"><textarea id="descr" name="descr" style="width: 100%;"></textarea></td>
             </tr>
             <tr>
