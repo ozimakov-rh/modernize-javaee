@@ -56,6 +56,7 @@ body {
     border-radius: 12px;
     white-space: nowrap;
     cursor: pointer;
+    margin: 5px 5px;
 }
 
 .r-button {
@@ -70,4 +71,10 @@ body {
     border-radius: 12px;
     white-space: nowrap;
     cursor: pointer;
+    margin: 5px 5px;
+}
+
+.login {
+    padding: 10px 10px;
+    display: flex;
 }

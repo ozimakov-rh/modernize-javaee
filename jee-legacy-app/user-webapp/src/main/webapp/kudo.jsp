@@ -10,11 +10,11 @@
 <div class="header">Send a Kudo</div>
 
 <div class="workarea">
-    <form action="./kudos" method="post">
+    <form action="./servlet/kudos" method="post">
         <table>
             <tr>
                 <td><label for="from">From:</label></td>
-                <td><input type="text" id="from" name="from"></td>
+                <td><input type="text" id="from" name="from" value="<%=request.getUserPrincipal().getName()%>" readonly></td>
                 <td>&nbsp;</td>
                 <td><label for="to">To:</label></td>
                 <td><input type="text" id="to" name="to"></td>

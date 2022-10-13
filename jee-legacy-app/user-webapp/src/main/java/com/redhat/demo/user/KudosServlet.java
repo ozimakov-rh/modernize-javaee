@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/kudos")
+@WebServlet(urlPatterns = "/servlet/kudos")
 public class KudosServlet extends HttpServlet {
 
     @EJB
@@ -22,7 +22,7 @@ public class KudosServlet extends HttpServlet {
         String to = req.getParameter("to") != null ? req.getParameter("to") : "N/A";
         String descr =  req.getParameter("descr") != null ? req.getParameter("descr") : "N/A";
         kudoService.createKudo(from, to, descr);
-        resp.sendRedirect("./");
+        resp.sendRedirect("../");
     }
 
 }

@@ -16,6 +16,7 @@
             <td class="widecol"><span class="header">Your Kudos</span></td>
             <td><a href="kudo.jsp" class="button">New Kudo</a></td>
             <td><a href="/admin-webapp" class="r-button">Admin app</a></td>
+            <td><a href="logout.jsp" class="r-button">Logout (<%=request.getUserPrincipal().getName()%>)</a></td>
         </tr>
     </table>
 </div>
@@ -33,7 +34,7 @@
             <th>Created</th>
         </tr>
         <%
-            List<Kudo> kudos = kudoService.listKudos("user1");
+            List<Kudo> kudos = kudoService.listKudos(request.getUserPrincipal().getName());
             if (kudos == null || kudos.size() == 0) {
         %>
         <tr>

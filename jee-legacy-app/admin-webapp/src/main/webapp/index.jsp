@@ -14,6 +14,7 @@
         <tr>
             <td class="widecol"><span class="header">Admin users' kudos</span></td>
             <td><a href="/user-webapp" class="r-button">User app</a></td>
+            <td><a href="logout.jsp" class="r-button">Logout (<%=request.getUserPrincipal().getName()%>)</a></td>
         </tr>
     </table>
 </div>
@@ -55,7 +56,7 @@
             </td>
             <td style="white-space: nowrap;"><%=kudo.getCreationDate()%>
             </td>
-            <td><a href="./admin?id=<%=kudo.getId()%>" class="button">Delete</a>
+            <td><a href="./servlet/admin?id=<%=kudo.getId()%>" class="button">Delete</a>
             </td>
         </tr>
         <%
