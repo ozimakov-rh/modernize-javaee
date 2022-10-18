@@ -2,7 +2,6 @@ package com.redhat.demo.admin;
 
 import com.redhat.demo.common.service.KudoService;
 
-import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
