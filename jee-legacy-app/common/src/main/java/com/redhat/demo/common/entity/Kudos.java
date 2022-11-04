@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Kudo implements Serializable {
+public class Kudos implements Serializable {
 
     @Id
     private Long id;
@@ -14,18 +14,16 @@ public class Kudo implements Serializable {
     private String userTo;
     private String description;
     private Date creationDate;
-    private int likes;
 
-    public Kudo() {
+    public Kudos() {
     }
 
-    public Kudo(Long id, String userFrom, String userTo, String description, Date creationDate, int likes) {
+    public Kudos(Long id, String userFrom, String userTo, String description, Date creationDate, int likes) {
         this.id = id;
         this.userFrom = userFrom;
         this.userTo = userTo;
         this.description = description;
         this.creationDate = creationDate;
-        this.likes = likes;
     }
 
     public Long getId() {
@@ -68,23 +66,14 @@ public class Kudo implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public int getLikes() {
-        return likes;
-    }
-
-    private void setLikes(int likes) {
-        this.likes = likes;
-    }
-
     @Override
     public String toString() {
-        return "Kudo{" +
+        return "Kudos {" +
                 "id=" + id +
                 ", userFrom='" + userFrom + '\'' +
                 ", userTo='" + userTo + '\'' +
                 ", description='" + description + '\'' +
                 ", creationDate=" + creationDate +
-                ", likes=" + likes +
                 '}';
     }
 
@@ -93,40 +82,35 @@ public class Kudo implements Serializable {
     }
 
     public static class Builder {
-        private Kudo kudo = new Kudo();
+        private Kudos kudos = new Kudos();
 
         public Builder id(Long id) {
-            kudo.setId(id);
+            kudos.setId(id);
             return this;
         }
 
         public Builder userFrom(String userFrom) {
-            kudo.setUserFrom(userFrom);
+            kudos.setUserFrom(userFrom);
             return this;
         }
 
         public Builder userTo(String userTo) {
-            kudo.setUserTo(userTo);
+            kudos.setUserTo(userTo);
             return this;
         }
 
         public Builder description(String description) {
-            kudo.setDescription(description);
+            kudos.setDescription(description);
             return this;
         }
 
         public Builder creationDate(Date creationDate) {
-            kudo.setCreationDate(creationDate);
+            kudos.setCreationDate(creationDate);
             return this;
         }
 
-        public Builder likes(int likes) {
-            kudo.setLikes(likes);
-            return this;
-        }
-
-        public Kudo build() {
-            return kudo;
+        public Kudos build() {
+            return kudos;
         }
 
     }

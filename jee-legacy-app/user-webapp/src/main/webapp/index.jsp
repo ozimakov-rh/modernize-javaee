@@ -1,9 +1,11 @@
-<%@ page import="com.redhat.demo.common.service.KudoService" %>
+<%@ page import="com.redhat.demo.common.service.KudosService" %>
 <%@ page import="javax.naming.InitialContext" %>
-<%@ page import="com.redhat.demo.common.entity.Kudo" %>
+<%@ page import="com.redhat.demo.common.entity.Kudos" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.redhat.demo.common.entity.Kudo" %>
-<%@ page import="com.redhat.demo.common.service.KudoService" %>
+<%@ page import="com.redhat.demo.common.entity.Kudos" %>
+<%@ page import="com.redhat.demo.common.service.KudosService" %>
+<%@ page import="com.redhat.demo.common.service.KudosService" %>
+<%@ page import="com.redhat.demo.common.entity.Kudos" %>
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
@@ -13,8 +15,8 @@
 <div class="header">
     <table>
         <tr>
-            <td class="widecol"><span class="header">Your Kudos</span></td>
-            <td><a href="kudo.jsp" class="button">New Kudo</a></td>
+            <td class="widecol"><span class="header">APPreciate</span></td>
+            <td><a href="kudos.jsp" class="button">Send Kudos</a></td>
             <td><a href="/admin-webapp" class="r-button">Admin app</a></td>
             <td><a href="logout.jsp" class="r-button">Logout (<%=request.getUserPrincipal().getName()%>)</a></td>
         </tr>
@@ -23,7 +25,7 @@
 
 <div class="workarea">
     <%
-        KudoService kudoService = (KudoService) new InitialContext().lookup("java:app/core-ejb-1.0-SNAPSHOT/kudoService");
+        KudosService kudosService = (KudosService) new InitialContext().lookup("java:app/core-ejb-1.0-SNAPSHOT/kudosService");
     %>
     <table class="data">
         <tr>
@@ -34,8 +36,8 @@
             <th>Created</th>
         </tr>
         <%
-            List<Kudo> kudos = kudoService.listKudos(request.getUserPrincipal().getName());
-            if (kudos == null || kudos.size() == 0) {
+            List<Kudos> kudosList = kudosService.listKudos(request.getUserPrincipal().getName());
+            if (kudosList == null || kudosList.size() == 0) {
         %>
         <tr>
             <td colspan="5">No data here yet</td>
@@ -44,18 +46,18 @@
                 return;
             }
 
-            for (Kudo kudo : kudos) {
+            for (Kudos kudos : kudosList) {
         %>
         <tr>
-            <td class="idcol"><%=kudo.getId()%>
+            <td class="idcol"><%=kudos.getId()%>
             </td>
-            <td><%=kudo.getUserFrom()%>
+            <td><%=kudos.getUserFrom()%>
             </td>
-            <td><%=kudo.getUserTo()%>
+            <td><%=kudos.getUserTo()%>
             </td>
-            <td class="widecol"><%=kudo.getDescription()%>
+            <td class="widecol"><%=kudos.getDescription()%>
             </td>
-            <td style="white-space: nowrap;"><%=kudo.getCreationDate()%>
+            <td style="white-space: nowrap;"><%=kudos.getCreationDate()%>
             </td>
         </tr>
         <%

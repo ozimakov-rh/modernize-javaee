@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Kudos Login (Java EE)</title>
+    <title>APPreciate Login (Java EE)</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
     }
 %>
 
-<div class="header">Kudo App (Java EE)</div>
+<div class="header">APPreciate (Java EE)</div>
 
 <div class="login">
     <form method="POST" action="j_security_check">

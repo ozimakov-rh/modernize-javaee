@@ -1,6 +1,6 @@
-package com.redhat.demo.core;
+package com.redhat.demo.core.kudo;
 
-import com.redhat.demo.common.entity.Kudo;
+import com.redhat.demo.common.entity.Kudos;
 
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
@@ -9,31 +9,31 @@ import javax.persistence.Query;
 import java.util.List;
 import java.util.stream.Stream;
 
-@Singleton(name = "jpa_store")
-public class JpaKudoStoreImpl implements KudoStore {
+@Singleton(name = "jpa_kudos_repo")
+public class JpaKudosRepoImpl implements KudosRepository {
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
-    public void add(Kudo kudo) {
-        em.persist(kudo);
+    public void add(Kudos kudos) {
+        em.persist(kudos);
     }
 
     @Override
-    public Stream<Kudo> stream() {
+    public Stream<Kudos> stream() {
         return this.list().stream();
     }
 
     @Override
-    public List<Kudo> list() {
-        Query query = em.createQuery("from Kudo k order by k.creationDate desc", Kudo.class);
+    public List<Kudos> list() {
+        Query query = em.createQuery("from Kudos k order by k.creationDate desc", Kudos.class);
         return query.getResultList();
     }
 
     @Override
     public void deleteById(Long id) {
-        Query query = em.createQuery("delete from Kudo k where k.id=" + id);
+        Query query = em.createQuery("delete from Kudos k where k.id=" + id);
         query.executeUpdate();
     }
 }

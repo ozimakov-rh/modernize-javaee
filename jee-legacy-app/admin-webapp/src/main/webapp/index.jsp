@@ -1,8 +1,8 @@
-<%@ page import="com.redhat.demo.common.service.KudoService" %>
+<%@ page import="com.redhat.demo.common.service.KudosService" %>
 <%@ page import="javax.naming.InitialContext" %>
-<%@ page import="com.redhat.demo.common.entity.Kudo" %>
+<%@ page import="com.redhat.demo.common.entity.Kudos" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.redhat.demo.common.entity.Kudo" %>
+<%@ page import="com.redhat.demo.common.entity.Kudos" %>
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
@@ -12,7 +12,7 @@
 <div class="header">
     <table>
         <tr>
-            <td class="widecol"><span class="header">Admin users' kudos</span></td>
+            <td class="widecol"><span class="header">APPreciate Admin</span></td>
             <td><a href="/user-webapp" class="r-button">User app</a></td>
             <td><a href="logout.jsp" class="r-button">Logout (<%=request.getUserPrincipal().getName()%>)</a></td>
         </tr>
@@ -21,7 +21,7 @@
 
 <div class="workarea">
     <%
-        KudoService kudoService = (KudoService) new InitialContext().lookup("java:app/core-ejb-1.0-SNAPSHOT/kudoService");
+        KudosService kudosService = (KudosService) new InitialContext().lookup("java:app/core-ejb-1.0-SNAPSHOT/kudosService");
     %>
     <table class="data">
         <tr>
@@ -33,8 +33,8 @@
             <th>Delete</th>
         </tr>
         <%
-            List<Kudo> kudos = kudoService.listAllKudos();
-            if (kudos == null || kudos.size() == 0) {
+            List<Kudos> kudosList = kudosService.listAllKudos();
+            if (kudosList == null || kudosList.size() == 0) {
         %>
         <tr>
             <td colspan="6">No data here yet</td>
@@ -43,20 +43,20 @@
                 return;
             }
 
-            for (Kudo kudo : kudos) {
+            for (Kudos kudos : kudosList) {
         %>
         <tr>
-            <td class="idcol"><%=kudo.getId()%>
+            <td class="idcol"><%=kudos.getId()%>
             </td>
-            <td><%=kudo.getUserFrom()%>
+            <td><%=kudos.getUserFrom()%>
             </td>
-            <td><%=kudo.getUserTo()%>
+            <td><%=kudos.getUserTo()%>
             </td>
-            <td class="widecol"><%=kudo.getDescription()%>
+            <td class="widecol"><%=kudos.getDescription()%>
             </td>
-            <td style="white-space: nowrap;"><%=kudo.getCreationDate()%>
+            <td style="white-space: nowrap;"><%=kudos.getCreationDate()%>
             </td>
-            <td><a href="./servlet/admin?id=<%=kudo.getId()%>" class="button">Delete</a>
+            <td><a href="./servlet/admin?id=<%=kudos.getId()%>" class="button">Delete</a>
             </td>
         </tr>
         <%

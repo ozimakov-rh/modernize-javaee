@@ -1,8 +1,8 @@
-package com.redhat.demo.core;
+package com.redhat.demo.core.kudo;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.redhat.demo.common.entity.Kudo;
+import com.redhat.demo.common.entity.Kudos;
 
 import javax.ejb.Singleton;
 import java.io.File;
@@ -15,25 +15,26 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-@Singleton(name = "file_store")
-public class FileSystemKudoStoreImpl implements KudoStore {
+@Singleton(name = "file_kudos_repo")
+public class FileSystemKudosRepoImpl implements KudosRepository {
 
     private final File dataFile;
     private final Gson gson = new Gson();
 
-    public FileSystemKudoStoreImpl() {
+    public FileSystemKudosRepoImpl() {
         try {
-            dataFile = File.createTempFile("kudo", ".json");
+            dataFile = File.createTempFile("kudos", ".json");
             System.out.println(" > " + dataFile.getAbsolutePath());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private synchronized <T> T doPersisted(Function<List<Kudo>,T> fun) {
+    private synchronized <T> T doPersisted(Function<List<Kudos>, T> fun) {
         try {
             // load list from file
-            List<Kudo> dataList = gson.fromJson(new FileReader(dataFile), new TypeToken<ArrayList<Kudo>>(){}.getType());
+            List<Kudos> dataList = gson.fromJson(new FileReader(dataFile), new TypeToken<ArrayList<Kudos>>() {
+            }.getType());
 
             if (dataList == null) {
                 dataList = new ArrayList<>();
@@ -53,25 +54,25 @@ public class FileSystemKudoStoreImpl implements KudoStore {
     }
 
     @Override
-    public void add(Kudo kudo) {
-        doPersisted(kudos -> {
-            kudos.add(kudo);
+    public void add(Kudos kudos) {
+        doPersisted(kudosList -> {
+            kudosList.add(kudos);
             return null;
         });
     }
 
     @Override
-    public Stream<Kudo> stream() {
+    public Stream<Kudos> stream() {
         return doPersisted(kudos -> kudos.stream());
     }
 
     @Override
-    public List<Kudo> list() {
+    public List<Kudos> list() {
         return doPersisted(kudos -> kudos);
     }
 
     @Override
     public void deleteById(Long id) {
-        doPersisted(kudos -> kudos.removeIf(kudo -> kudo.getId().equals(id)));
+        doPersisted(kudosList -> kudosList.removeIf(kudos -> kudos.getId().equals(id)));
     }
 }
