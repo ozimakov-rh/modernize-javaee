@@ -1,5 +1,6 @@
 package com.redhat.demo.admin;
 
+import com.redhat.demo.common.service.AchievementService;
 import com.redhat.demo.common.service.KudosService;
 
 import javax.ejb.EJB;
@@ -16,10 +17,20 @@ public class AdminServlet extends HttpServlet {
     @EJB
     private KudosService kudosService;
 
+    @EJB
+    private AchievementService achievementService;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long kudosId = Long.parseLong(req.getParameter("id"));
-        kudosService.deleteKudos(kudosId);
+        Long id = Long.parseLong(req.getParameter("id"));
+        String type = req.getParameter("type");
+
+        if (type != null && type.equalsIgnoreCase("kudos")) {
+            kudosService.deleteKudos(id);
+        } else {
+            achievementService.deleteAchievement(id);
+        }
+
         resp.sendRedirect("../");
     }
 

@@ -10,4 +10,7 @@ public interface AchievementRepository {
     Stream<Achievement> stream();
     List<Achievement> list();
 
+    void add(Achievement achievement);
+
+    void deleteById(Long id);
 }

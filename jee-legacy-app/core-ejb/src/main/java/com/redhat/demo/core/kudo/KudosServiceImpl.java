@@ -1,11 +1,14 @@
 package com.redhat.demo.core.kudo;
 
 import com.redhat.demo.common.entity.Kudos;
+import com.redhat.demo.common.event.KudosCreatedEvent;
 import com.redhat.demo.common.service.KudosService;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -18,6 +21,9 @@ public class KudosServiceImpl implements KudosService {
     @EJB(beanName = "jpa_kudos_repo")
     private KudosRepository kudosRepository;
 
+    @Inject
+    private Event<KudosCreatedEvent> event;
+
     @Override
     public Kudos createKudos(String userFrom, String userTo, String description) {
         Kudos kudos = Kudos.builder()
@@ -28,15 +34,18 @@ public class KudosServiceImpl implements KudosService {
                 .creationDate(new Date())
                 .build();
         kudosRepository.add(kudos);
+
+        // publish event
+        event.fire(new KudosCreatedEvent(kudos));
+
         return kudos;
     }
 
     @Override
     public List<Kudos> listKudos(String user) {
         return kudosRepository.stream()
-                .filter(kudos ->
-                        kudos.getUserTo().equalsIgnoreCase(user) || kudos.getUserFrom().equalsIgnoreCase(user)
-                ).collect(Collectors.toList());
+                .filter(kudos -> kudos.getUserTo().equalsIgnoreCase(user) || kudos.getUserFrom().equalsIgnoreCase(user))
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -15,8 +15,8 @@
 <div class="header">
     <table>
         <tr>
-            <td class="widecol"><span class="header">APPreciate</span></td>
-            <td><a href="kudos.jsp" class="button">Send Kudos</a></td>
+            <td class="widecol"><span class="header">APPreciate - Kudos</span></td>
+            <td><a href="achievements.jsp" class="r-button">My Achievements</a></td>
             <td><a href="/admin-webapp" class="r-button">Admin app</a></td>
             <td><a href="logout.jsp" class="r-button">Logout (<%=request.getUserPrincipal().getName()%>)</a></td>
         </tr>
@@ -43,10 +43,8 @@
             <td colspan="5">No data here yet</td>
         </tr>
         <%
-                return;
-            }
-
-            for (Kudos kudos : kudosList) {
+            } else {
+                for (Kudos kudos : kudosList) {
         %>
         <tr>
             <td class="idcol"><%=kudos.getId()%>
@@ -61,9 +59,16 @@
             </td>
         </tr>
         <%
+                }
             }
         %>
     </table>
+
+    <div style="width: 100%; text-align: center;">
+        <a href="kudos.jsp" class="button">Send Kudos</a>
+    </div>
+
+
 </div>
 
 </body>

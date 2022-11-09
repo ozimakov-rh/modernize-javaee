@@ -3,6 +3,8 @@
 <%@ page import="com.redhat.demo.common.entity.Kudos" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.redhat.demo.common.entity.Kudos" %>
+<%@ page import="com.redhat.demo.common.entity.Achievement" %>
+<%@ page import="com.redhat.demo.common.service.AchievementService" %>
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
@@ -20,6 +22,7 @@
 </div>
 
 <div class="workarea">
+    <div>Kudos</div>
     <%
         KudosService kudosService = (KudosService) new InitialContext().lookup("java:app/core-ejb-1.0-SNAPSHOT/kudosService");
     %>
@@ -40,9 +43,7 @@
             <td colspan="6">No data here yet</td>
         </tr>
         <%
-                return;
-            }
-
+        } else {
             for (Kudos kudos : kudosList) {
         %>
         <tr>
@@ -56,13 +57,58 @@
             </td>
             <td style="white-space: nowrap;"><%=kudos.getCreationDate()%>
             </td>
-            <td><a href="./servlet/admin?id=<%=kudos.getId()%>" class="button">Delete</a>
+            <td><a href="./servlet/admin?type=kudos&id=<%=kudos.getId()%>" class="button">Delete</a>
             </td>
         </tr>
         <%
+                }
             }
         %>
     </table>
+
+    <div>&nbsp;</div>
+
+    <div>Achievements</div>
+    <%
+        AchievementService achievementService = (AchievementService) new InitialContext().lookup("java:app/core-ejb-1.0-SNAPSHOT/achievementService!com.redhat.demo.common.service.AchievementService");
+    %>
+    <table class="data">
+        <tr>
+            <th class="idcol">ID</th>
+            <th>Owner</th>
+            <th class="widecol">Achievement</th>
+            <th>Created</th>
+            <th>Delete</th>
+        </tr>
+        <%
+            List<Achievement> achievementList = achievementService.listAllAchievements();
+            if (achievementList == null || achievementList.size() == 0) {
+        %>
+        <tr>
+            <td colspan="5">No data here yet</td>
+        </tr>
+        <%
+        } else {
+            for (Achievement achievement : achievementList) {
+        %>
+        <tr>
+            <td class="idcol"><%=achievement.getId()%>
+            </td>
+            <td><%=achievement.getOwner()%>
+            </td>
+            <td class="widecol"><%=achievement.getType()%>
+            </td>
+            <td><%=achievement.getCreationDate()%>
+            </td>
+            <td><a href="./servlet/admin?type=achievement&id=<%=achievement.getId()%>" class="button">Delete</a>
+            </td>
+        </tr>
+        <%
+                }
+            }
+        %>
+    </table>
+
 </div>
 
 </body>

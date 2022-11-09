@@ -11,16 +11,16 @@ public class Achievement implements Serializable {
     @Id
     private Long id;
     private String owner;
-    private String description;
+    private String type;
     private Date creationDate;
 
     public Achievement() {
     }
 
-    public Achievement(Long id, String owner, String description, Date creationDate) {
+    public Achievement(Long id, String owner, String type, Date creationDate) {
         this.id = id;
         this.owner = owner;
-        this.description = description;
+        this.type = type;
         this.creationDate = creationDate;
     }
 
@@ -40,12 +40,12 @@ public class Achievement implements Serializable {
         this.owner = owner;
     }
 
-    public String getDescription() {
-        return description;
+    public String getType() {
+        return type;
     }
 
-    private void setDescription(String description) {
-        this.description = description;
+    private void setType(String description) {
+        this.type = description;
     }
 
     public Date getCreationDate() {
@@ -61,7 +61,7 @@ public class Achievement implements Serializable {
         return "Kudo{" +
                 "id=" + id +
                 ", owner='" + owner + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + type + '\'' +
                 ", creationDate=" + creationDate +
                 '}';
     }
@@ -83,8 +83,8 @@ public class Achievement implements Serializable {
             return this;
         }
 
-        public Builder description(String description) {
-            achievement.setDescription(description);
+        public Builder type(String type) {
+            achievement.setType(type);
             return this;
         }
 

@@ -8,10 +8,10 @@ public interface AchievementService {
 
     // user features
     List<Achievement> listAchievements(String user);
-    List<Achievement> calculateAchievements(String user);
+    List<Achievement> refreshAchievements(String user);
 
     // integration features
-    void grantAchievement(String user, String achiementDefinitionId);
+    Achievement grantAchievement(String user, String achiementDefinitionId);
 
     // admin features
     List<Achievement> listAllAchievements();
