@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div class="header">Send a Kudo</div>
+<div class="header">Send a Kudos</div>
 
 <div class="workarea">
     <form action="./servlet/kudos" method="post">
@@ -20,7 +20,7 @@
                 <td><input type="text" id="to" name="to"></td>
             </tr>
             <tr>
-                <td><label for="descr">Kudo text:</label></td>
+                <td><label for="descr">Kudos text:</label></td>
                 <td colspan="4"><textarea id="descr" name="descr" style="width: 100%;"></textarea></td>
             </tr>
             <tr>

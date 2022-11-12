@@ -32,7 +32,7 @@
             <th class="idcol">ID</th>
             <th>From</th>
             <th>To</th>
-            <th class="widecol">Kudo</th>
+            <th class="widecol">Kudos</th>
             <th>Created</th>
         </tr>
         <%
