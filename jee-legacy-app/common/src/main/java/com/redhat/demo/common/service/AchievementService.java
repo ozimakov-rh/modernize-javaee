@@ -11,7 +11,7 @@ public interface AchievementService {
     List<Achievement> refreshAchievements(String user);
 
     // integration features
-    Achievement grantAchievement(String user, String achiementDefinitionId);
+    Achievement grantAchievement(String user, String achiementType);
 
     // admin features
     List<Achievement> listAllAchievements();

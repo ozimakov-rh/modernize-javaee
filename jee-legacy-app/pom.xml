@@ -11,6 +11,7 @@
     <modules>
         <module>user-webapp</module>
         <module>admin-webapp</module>
+        <module>integration</module>
         <module>common</module>
         <module>core-ejb</module>
         <module>ear</module>
