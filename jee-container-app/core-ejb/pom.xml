@@ -3,48 +3,37 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>jee-legacy-app</artifactId>
+        <artifactId>jee-container-app</artifactId>
         <groupId>com.redhat.demo</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ear</artifactId>
+    <artifactId>core-ejb</artifactId>
 
-    <packaging>ear</packaging>
+    <packaging>ejb</packaging>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>user-webapp</artifactId>
+            <artifactId>common</artifactId>
             <version>${project.version}</version>
-            <type>war</type>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>admin-webapp</artifactId>
-            <version>${project.version}</version>
-            <type>war</type>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>integration</artifactId>
-            <version>${project.version}</version>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>core-ejb</artifactId>
-            <version>${project.version}</version>
-            <type>ejb</type>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>jee-legacy</finalName>
         <plugins>
             <plugin>
-                <artifactId>maven-ear-plugin</artifactId>
+                <artifactId>maven-ejb-plugin</artifactId>
                 <configuration>
                     <archive>
                         <manifest>
