@@ -22,6 +22,9 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <wildfly.version>27.0.0.Final</wildfly.version>
+        <wildfly.galleon.datasources.version>3.0.0.Final</wildfly.galleon.datasources.version>
+        <wildfly.galleon.cloud.version>2.0.0.Final</wildfly.galleon.cloud.version>
     </properties>
 
     <dependencyManagement>
@@ -56,6 +59,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>4.0.0.Final</version>
                 </plugin>
             </plugins>
         </pluginManagement>
