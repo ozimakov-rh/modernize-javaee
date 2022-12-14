@@ -5,13 +5,16 @@ import com.redhat.demo.common.entity.Kudos;
 import com.redhat.demo.common.event.KudosCreatedEvent;
 import com.redhat.demo.common.service.AchievementService;
 import com.redhat.demo.common.service.KudosService;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Local;
+import jakarta.ejb.Remote;
+import jakarta.ejb.Stateless;
+import jakarta.enterprise.event.Observes;
 
-import javax.ejb.EJB;
-import javax.ejb.Local;
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
-import javax.enterprise.event.Observes;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Stateless(name = "achievementService")

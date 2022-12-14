@@ -4,11 +4,11 @@ import com.redhat.demo.common.entity.Kudos;
 import com.redhat.demo.common.event.KudosCreatedEvent;
 import com.redhat.demo.common.service.KudosService;
 
-import javax.ejb.EJB;
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Remote;
+import jakarta.ejb.Stateless;
+import jakarta.enterprise.event.Event;
+import jakarta.inject.Inject;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;

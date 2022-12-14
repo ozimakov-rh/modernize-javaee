@@ -2,17 +2,15 @@ package demo.integration;
 
 import com.redhat.demo.common.entity.Achievement;
 import com.redhat.demo.common.service.AchievementService;
+import jakarta.ejb.EJB;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
-import javax.annotation.ManagedBean;
-import javax.ejb.EJB;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/achievements")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@ManagedBean
 public class AchievementsIntegrationResource {
 
     @EJB

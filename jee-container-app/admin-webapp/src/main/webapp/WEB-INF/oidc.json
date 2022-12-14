@@ -1,0 +1,8 @@
+{
+  "provider-url": "https://sso.apps.zimakov.net/auth/realms/master",
+  "ssl-required": "external",
+  "client-id": "jee-app",
+  "public-client": true,
+  "confidential-port": 0,
+  "principal-attribute": "preferred_username"
+}

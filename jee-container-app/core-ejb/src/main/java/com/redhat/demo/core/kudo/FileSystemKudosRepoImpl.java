@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.redhat.demo.common.entity.Kudos;
 
-import javax.ejb.Singleton;
+import jakarta.ejb.Singleton;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;

@@ -30,9 +30,11 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>javax</groupId>
-                <artifactId>javaee-api</artifactId>
-                <version>8.0.1</version>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-ee-with-tools</artifactId>
+                <version>${wildfly.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.jboss.resteasy</groupId>

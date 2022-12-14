@@ -40,6 +40,62 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>wildfly-build</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <configuration>
+                            <feature-packs>
+                                <feature-pack>
+                                    <location>org.wildfly:wildfly-galleon-pack:${wildfly.version}</location>
+                                </feature-pack>
+                                <feature-pack>
+                                    <location>org.wildfly:wildfly-datasources-galleon-pack:${wildfly.galleon.datasources.version}</location>
+                                </feature-pack>
+                                <feature-pack>
+                                    <location>org.wildfly.cloud:wildfly-cloud-galleon-pack:${wildfly.galleon.cloud.version}</location>
+                                </feature-pack>
+                            </feature-packs>
+                            <image>
+                                <jdk-version>17</jdk-version>
+                                <docker-binary>podman</docker-binary>
+                                <name>${build.finalName}</name>
+                                <tag>latest</tag>
+                            </image>
+                            <layers>
+                                <layer>cloud-server</layer>
+                                <layer>ejb</layer>
+                                <layer>remoting</layer>
+                                <layer>jsf</layer>
+                                <layer>jpa</layer>
+                                <layer>h2database-driver</layer>
+                                <layer>h2database-datasource</layer>
+                                <layer>h2database-default-datasource</layer>
+                                <layer>elytron-oidc-client</layer>
+                            </layers>
+                            <galleon-options>
+                                <jboss-fork-embedded>true</jboss-fork-embedded>
+                            </galleon-options>
+                            <runtime-name>ROOT.ear</runtime-name>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>image</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
         <finalName>jee-app</finalName>
         <plugins>
@@ -52,49 +108,6 @@
                         </manifest>
                     </archive>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <configuration>
-                    <feature-packs>
-                        <feature-pack>
-                            <location>org.wildfly:wildfly-galleon-pack:${wildfly.version}</location>
-                        </feature-pack>
-                        <feature-pack>
-                            <location>org.wildfly:wildfly-datasources-galleon-pack:${wildfly.galleon.datasources.version}</location>
-                        </feature-pack>
-                        <feature-pack>
-                            <location>org.wildfly.cloud:wildfly-cloud-galleon-pack:${wildfly.galleon.cloud.version}</location>
-                        </feature-pack>
-                    </feature-packs>
-                    <image>
-                        <jdk-version>17</jdk-version>
-                        <docker-binary>podman</docker-binary>
-                        <name>${build.finalName}</name>
-                        <tag>latest</tag>
-                    </image>
-                    <layers>
-                        <layer>cloud-server</layer>
-                        <layer>ejb-lite</layer>
-                        <layer>jsf</layer>
-                        <layer>jpa</layer>
-                        <layer>h2database-driver</layer>
-                        <layer>h2database-datasource</layer>
-                        <layer>h2database-default-datasource</layer>
-                    </layers>
-                    <galleon-options>
-                        <jboss-fork-embedded>true</jboss-fork-embedded>
-                    </galleon-options>
-                    <runtime-name>ROOT.ear</runtime-name>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>image</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

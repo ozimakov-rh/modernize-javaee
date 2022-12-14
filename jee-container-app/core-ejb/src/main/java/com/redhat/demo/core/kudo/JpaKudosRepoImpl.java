@@ -2,10 +2,10 @@ package com.redhat.demo.core.kudo;
 
 import com.redhat.demo.common.entity.Kudos;
 
-import javax.ejb.Singleton;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import jakarta.ejb.Singleton;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -27,7 +27,7 @@ public class JpaKudosRepoImpl implements KudosRepository {
 
     @Override
     public List<Kudos> list() {
-        Query query = em.createQuery("from Kudos k order by k.creationDate desc", Kudos.class);
+        Query query = em.createQuery("select k from Kudos k order by k.creationDate desc", Kudos.class);
         return query.getResultList();
     }
 

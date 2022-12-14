@@ -14,8 +14,6 @@
     <packaging>war</packaging>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -27,8 +25,13 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.ejb</groupId>
+            <artifactId>jakarta.ejb-api</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>
