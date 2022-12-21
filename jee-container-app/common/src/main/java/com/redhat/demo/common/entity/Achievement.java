@@ -59,10 +59,10 @@ public class Achievement implements Serializable {
 
     @Override
     public String toString() {
-        return "Kudo{" +
+        return "Achievement{" +
                 "id=" + id +
                 ", owner='" + owner + '\'' +
-                ", description='" + type + '\'' +
+                ", type='" + type + '\'' +
                 ", creationDate=" + creationDate +
                 '}';
     }

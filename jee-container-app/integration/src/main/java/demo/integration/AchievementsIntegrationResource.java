@@ -2,12 +2,15 @@ package demo.integration;
 
 import com.redhat.demo.common.entity.Achievement;
 import com.redhat.demo.common.service.AchievementService;
+import com.redhat.demo.common.service.KudosService;
 import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
+@Stateless
 @Path("/achievements")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
