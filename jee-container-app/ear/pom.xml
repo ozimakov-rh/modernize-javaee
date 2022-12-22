@@ -54,10 +54,14 @@
                                     <location>org.wildfly:wildfly-galleon-pack:${wildfly.version}</location>
                                 </feature-pack>
                                 <feature-pack>
-                                    <location>org.wildfly:wildfly-datasources-galleon-pack:${wildfly.galleon.datasources.version}</location>
+                                    <location>
+                                        org.wildfly:wildfly-datasources-galleon-pack:${wildfly.galleon.datasources.version}
+                                    </location>
                                 </feature-pack>
                                 <feature-pack>
-                                    <location>org.wildfly.cloud:wildfly-cloud-galleon-pack:${wildfly.galleon.cloud.version}</location>
+                                    <location>
+                                        org.wildfly.cloud:wildfly-cloud-galleon-pack:${wildfly.galleon.cloud.version}
+                                    </location>
                                 </feature-pack>
                             </feature-packs>
                             <image>

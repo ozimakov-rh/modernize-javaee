@@ -1,8 +1,7 @@
-package demo.integration;
+package com.redhat.demo.integration;
 
 import com.redhat.demo.common.entity.Achievement;
 import com.redhat.demo.common.service.AchievementService;
-import com.redhat.demo.common.service.KudosService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.ws.rs.*;
